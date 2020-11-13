@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{C745EA46-C3A5-46A2-8646-6DF370F56B42}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="pokerKata.cs">
+    <Files>
+      <File FileName="pokerKata.cs" Line="37" Column="23" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PokerKata" expanded="True">
+            <Node name="PokerKata" expanded="True">
+              <Node name="pokerKata.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="PokerKata" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.PokerKata PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
