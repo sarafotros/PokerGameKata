@@ -1,7 +1,7 @@
-﻿<Properties StartupConfiguration="{C745EA46-C3A5-46A2-8646-6DF370F56B42}|Default">
+﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="pokerKata.cs">
     <Files>
-      <File FileName="pokerKata.cs" Line="37" Column="23" />
+      <File FileName="pokerKata.cs" Line="37" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,11 +11,6 @@
               <Node name="pokerKata.cs" selected="True" />
             </Node>
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="PokerKata" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
