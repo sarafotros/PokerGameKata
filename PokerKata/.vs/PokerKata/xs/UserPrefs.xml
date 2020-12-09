@@ -1,14 +1,24 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="pokerKata.cs">
+﻿<Properties StartupConfiguration="{C745EA46-C3A5-46A2-8646-6DF370F56B42}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PlayerHand.cs">
     <Files>
-      <File FileName="pokerKata.cs" Line="37" Column="17" />
+      <File FileName="Suit.cs" Line="1" Column="1" />
+      <File FileName="CardRankComparer.cs" />
+      <File FileName="pokerKata.cs" />
+      <File FileName="PlayerHand.cs" Line="41" Column="2" />
+      <File FileName="PlayerCard.cs" />
+      <File FileName="UnitTests/PokerGametests.cs" />
+      <File FileName="UnitTests/PokerHandTests.cs" />
+      <File FileName="UnitTests/CardRankComparerTests.cs" />
+      <File FileName="Rank.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PokerKata" expanded="True">
             <Node name="PokerKata" expanded="True">
-              <Node name="pokerKata.cs" selected="True" />
+              <Node name="UnitTests" expanded="True">
+                <Node name="PokerGametests.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

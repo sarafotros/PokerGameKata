@@ -3,7 +3,9 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="PokerKata" expanded="True" selected="True" />
+          <Node name="PokerKata" expanded="True">
+            <Node name="PokerKata" selected="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>
