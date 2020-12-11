@@ -22,8 +22,6 @@ namespace PokerKata.UnitTests
             Assert.Equal(expectedScore, result);
         }
 
-
-
     }
 }
 

@@ -45,9 +45,8 @@ namespace PokerKata
 
             if (HasTwoPairs())
             {
-                return $"Two pair: {GetTwoPair().Item1}s and {GetTwoPair().Item2}s";
+                return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
             };
-
 
             if (HaveWeGotOfAKind(3))
             {
@@ -74,15 +73,12 @@ namespace PokerKata
         private (Rank Highest, Rank Lowest) GetTwoPair()
         {
             var pairs = groupedByRank.Where(group => group.Count() == 2);
-            var firstRank = pairs.First().First().Rank;
-            var secondRank = pairs.Last().First().Rank;
+           
+            var ranks = pairs.Select(group => group.First().Rank).ToList();
 
-            if (firstRank > secondRank)
-            {
-                return (firstRank, secondRank);
-            }
+            ranks.Sort();
 
-            return (secondRank, firstRank);
+            return (ranks.Last(), ranks.First());
         }
 
         private bool HaveWeGotOfAKind(int number)
