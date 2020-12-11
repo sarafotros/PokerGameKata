@@ -43,6 +43,11 @@ namespace PokerKata
                 return $"Four of a kind: {GetBestRank()}s";
             };
 
+            if(HaveWeGotOfAKind(3) && HaveWeGotOfAKind(2))
+            {
+                return $"Full House: threes and sevens";
+            }
+
             if (HasTwoPairs())
             {
                 return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
@@ -83,7 +88,7 @@ namespace PokerKata
 
         private bool HaveWeGotOfAKind(int number)
         {
-            return groupedByRank.First().Count() == number;
+            return groupedByRank.Any(group => group.Count() == number);
         }
 
         private Rank GetBestRank()
