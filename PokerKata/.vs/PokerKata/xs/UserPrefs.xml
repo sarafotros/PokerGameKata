@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{C745EA46-C3A5-46A2-8646-6DF370F56B42}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PlayerHand.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTests/PokerGametests.cs">
     <Files>
       <File FileName="Suit.cs" Line="1" Column="1" />
-      <File FileName="CardRankComparer.cs" />
-      <File FileName="pokerKata.cs" />
+      <File FileName="CardRankComparer.cs" Line="1" Column="1" />
+      <File FileName="pokerKata.cs" Line="1" Column="1" />
       <File FileName="PlayerHand.cs" Line="41" Column="2" />
-      <File FileName="PlayerCard.cs" />
-      <File FileName="UnitTests/PokerGametests.cs" />
+      <File FileName="PlayerCard.cs" Line="1" Column="1" />
+      <File FileName="UnitTests/PokerGametests.cs" Line="1" Column="1" />
       <File FileName="UnitTests/PokerHandTests.cs" />
       <File FileName="UnitTests/CardRankComparerTests.cs" />
       <File FileName="Rank.cs" />
