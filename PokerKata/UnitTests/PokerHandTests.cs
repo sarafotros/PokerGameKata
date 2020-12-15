@@ -14,6 +14,8 @@ namespace PokerKata.UnitTests
         [InlineData("2C 7H 7S QH QC", "Two pair: Queens and sevens")]
         [InlineData("2C QD QS QH QC", "Four of a kind: Queens")]
         [InlineData("3C 3D 3S 7H 7C", "Full House: threes and sevens")]
+        [InlineData("QC QD QS 4H 4C", "Full House: Queens and fours")]
+        [InlineData("3C 4C QC 8C 2C", "Flush: Clubs , high card: Queen")]
 
 
         public void AcceptPlayersHand_ReturnsHighestScore(string playersHand, string expectedScore)

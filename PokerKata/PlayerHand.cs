@@ -8,6 +8,8 @@ namespace PokerKata
     {
         private List<PlayerCard> PlayingCards = new List<PlayerCard>();
         IOrderedEnumerable<IGrouping<Rank, PlayerCard>> groupedByRank;
+        IOrderedEnumerable<IGrouping<Suit, PlayerCard>> groupedBySuit;
+        
 
 
         public PlayerHand(string playersHand)
@@ -22,8 +24,14 @@ namespace PokerKata
 
             groupedByRank = PlayingCards.GroupBy(card => card.Rank)
                             .OrderByDescending(group => group.Count());
-
+            
+            groupedBySuit = PlayingCards.GroupBy(card => card.Suit)
+                .OrderByDescending(group => group.Count());
+            
             var json = JsonConvert.SerializeObject(PlayingCards);
+            
+            // Sort changes underlying collection
+            PlayingCards.Sort(new CardRankComparer());
         }
 
 
@@ -32,7 +40,8 @@ namespace PokerKata
          *      PlayingCards = { card1, card2, card3, card4, card5,  } ;
          *
          *      GroupedBy = {   { card1, card2, }, {card4, card5}, { card3,}  }
-         *
+         * 
+         **      GroupedBy = {   { 3Clubs, 3Hearts, 3 Diamonds }, {2Diamonds, 2Clubs} }
          */
 
         public string GetScore()
@@ -42,31 +51,39 @@ namespace PokerKata
             {
                 return $"Four of a kind: {GetBestRank()}s";
             };
+            
 
             if(HaveWeGotOfAKind(3) && HaveWeGotOfAKind(2))
             {
-                return $"Full House: threes and sevens";
+                return $"Full House: {GetRankAtIndex(0)}s and {GetRankAtIndex(1)}s";
             }
 
-            if (HasTwoPairs())
+            if (IsFlush())
             {
-                return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
-            };
-
+                return $"Flush: {groupedBySuit.First().First().Suit}s , high card: {PlayingCards.Last().Rank}";
+            }
+            
             if (HaveWeGotOfAKind(3))
             {
                 return $"Three of a kind: {GetBestRank()}s";
             };
 
+            if (HasTwoPairs())
+            {
+                return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
+            };
+            
             if (HaveWeGotOfAKind(2))
             {
                 return $"Pair: {GetBestRank()}s";
             };
-
-            // Sort changes underlying collection
-            PlayingCards.Sort(new CardRankComparer());
-
+            
             return $"high card: {PlayingCards.Last().Rank}";
+        }
+
+        private bool IsFlush()
+        {
+            return groupedBySuit.Count() == 1;
         }
 
         private bool HasTwoPairs()
@@ -93,7 +110,14 @@ namespace PokerKata
 
         private Rank GetBestRank()
         {
-            return groupedByRank.First().First().Rank;
+            // return groupedByRank.First().First().Rank;
+            return GetRankAtIndex(0);
+        }
+
+        private Rank GetRankAtIndex(int index)
+        {
+           var groupList = groupedByRank.ToList();
+           return groupList[index].First().Rank;
         }
 
     }
