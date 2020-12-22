@@ -62,7 +62,12 @@ namespace PokerKata
             {
                 return $"Flush: {groupedBySuit.First().First().Suit}s , high card: {PlayingCards.Last().Rank}";
             }
-            
+
+            if (Straight())
+            {
+                return "Straight , high card: Queen";
+            }
+
             if (HaveWeGotOfAKind(3))
             {
                 return $"Three of a kind: {GetBestRank()}s";
@@ -118,6 +123,26 @@ namespace PokerKata
         {
            var groupList = groupedByRank.ToList();
            return groupList[index].First().Rank;
+        }
+
+        private bool Straight()
+        {
+
+            var rankAtIndexZero = GetRankAtIndex(0);
+            var rankAtIndexOne = GetRankAtIndex(1);
+            var rankAtIndexTwo = GetRankAtIndex(2);
+            var rankAtIndexThree = GetRankAtIndex(3);
+            var rankAtIndexFour = GetRankAtIndex(4);
+
+
+            if (rankAtIndexOne == rankAtIndexZero + 1 && rankAtIndexTwo == rankAtIndexOne + 1 && rankAtIndexThree == rankAtIndexTwo + 1 && rankAtIndexFour == rankAtIndexThree + 1)
+            {
+                return true;
+            }
+
+            return false;
+
+            
         }
 
     }
