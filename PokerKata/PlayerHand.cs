@@ -46,6 +46,15 @@ namespace PokerKata
 
         public string GetScore()
         {
+            if (RoyalFlush())
+            {
+                return "Royal Flush";
+            }
+
+            if (StraightFlush())
+            {
+                return $"Straight Flush , high card: {HighCard().Rank}";
+            }
 
             if (HaveWeGotOfAKind(4))
             {
@@ -60,12 +69,12 @@ namespace PokerKata
 
             if (IsFlush())
             {
-                return $"Flush: {groupedBySuit.First().First().Suit}s , high card: {PlayingCards.Last().Rank}";
+                return $"Flush: {groupedBySuit.First().First().Suit}s , high card: {HighCard().Rank}";
             }
 
             if (Straight())
             {
-                return "Straight , high card: Queen";
+                return $"Straight , high card: {HighCard().Rank}";
             }
 
             if (HaveWeGotOfAKind(3))
@@ -83,7 +92,23 @@ namespace PokerKata
                 return $"Pair: {GetBestRank()}s";
             };
             
-            return $"high card: {PlayingCards.Last().Rank}";
+            return $"high card: {HighCard().Rank}";
+        }
+
+        private PlayerCard HighCard()
+        {
+            return PlayingCards.Last();
+
+        }
+
+        private bool RoyalFlush()
+        {
+            return StraightFlush() && HighCard().Rank == Rank.Ace;
+        }
+
+        private bool StraightFlush()
+        {
+            return Straight() && IsFlush();
         }
 
         private bool IsFlush()
@@ -127,20 +152,45 @@ namespace PokerKata
 
         private bool Straight()
         {
+            var index = 0;
 
-            var rankAtIndexZero = GetRankAtIndex(0);
-            var rankAtIndexOne = GetRankAtIndex(1);
-            var rankAtIndexTwo = GetRankAtIndex(2);
-            var rankAtIndexThree = GetRankAtIndex(3);
-            var rankAtIndexFour = GetRankAtIndex(4);
-
-
-            if (rankAtIndexOne == rankAtIndexZero + 1 && rankAtIndexTwo == rankAtIndexOne + 1 && rankAtIndexThree == rankAtIndexTwo + 1 && rankAtIndexFour == rankAtIndexThree + 1)
+            while (index < PlayingCards.Count() - 1)
             {
-                return true;
+                var rankAtCurrentIndex = PlayingCards[index].Rank;
+                var rankAtNextIndex = PlayingCards[index + 1].Rank;
+
+                if (rankAtNextIndex != rankAtCurrentIndex + 1)
+                {
+                    return false;
+                }
+
+                index++; 
+
             }
 
-            return false;
+
+            return true;
+
+           // var cardGroup = groupedByRank.ToList().First();
+
+
+            //foreach (var card in cardGroup)
+            //{
+
+            //}
+
+            //var rankAtIndexOne = GetRankAtIndex(1);
+            //var rankAtIndexTwo = GetRankAtIndex(2);
+            //var rankAtIndexThree = GetRankAtIndex(3);
+            //var rankAtIndexFour = GetRankAtIndex(4);
+
+
+            //if (rankAtIndexOne == rankAtIndexZero + 1 && rankAtIndexTwo == rankAtIndexOne + 1 && rankAtIndexThree == rankAtIndexTwo + 1 && rankAtIndexFour == rankAtIndexThree + 1)
+            //{
+            //    return true;
+            //}
+
+            //return false;
 
             
         }
