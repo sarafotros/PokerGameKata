@@ -46,51 +46,34 @@ namespace PokerKata
 
         public string GetScore()
         {
-            if (RoyalFlush())
-            {
+            if (IsRoyalFlush())
                 return "Royal Flush";
-            }
-
-            if (StraightFlush())
-            {
-                return $"Straight Flush , high card: {HighCard().Rank}";
-            }
-
-            if (HaveWeGotOfAKind(4))
-            {
-                return $"Four of a kind: {GetBestRank()}s";
-            };
             
-
-            if(HaveWeGotOfAKind(3) && HaveWeGotOfAKind(2))
-            {
+            if (IsStraightFlush())
+                return $"IsStraight Flush , high card: {HighCard().Rank}";
+            
+            if (IsOfKind(4))
+                return $"Four of a kind: {GetBestRank()}s";
+            
+            if(IsFullHouse())
                 return $"Full House: {GetRankAtIndex(0)}s and {GetRankAtIndex(1)}s";
-            }
+            
 
             if (IsFlush())
-            {
                 return $"Flush: {groupedBySuit.First().First().Suit}s , high card: {HighCard().Rank}";
-            }
-
-            if (Straight())
-            {
-                return $"Straight , high card: {HighCard().Rank}";
-            }
-
-            if (HaveWeGotOfAKind(3))
-            {
-                return $"Three of a kind: {GetBestRank()}s";
-            };
-
-            if (HasTwoPairs())
-            {
-                return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
-            };
             
-            if (HaveWeGotOfAKind(2))
-            {
+            if (IsStraight())
+                return $"IsStraight , high card: {HighCard().Rank}";
+            
+
+            if (IsOfKind(3))
+                return $"Three of a kind: {GetBestRank()}s";
+
+            if (IsTwoPairs())
+                return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
+            
+            if (IsOfKind(2))
                 return $"Pair: {GetBestRank()}s";
-            };
             
             return $"high card: {HighCard().Rank}";
         }
@@ -101,14 +84,19 @@ namespace PokerKata
 
         }
 
-        private bool RoyalFlush()
+        private bool IsFullHouse()
         {
-            return StraightFlush() && HighCard().Rank == Rank.Ace;
+          return IsOfKind(3) && IsOfKind(2);
         }
 
-        private bool StraightFlush()
+        private bool IsRoyalFlush()
         {
-            return Straight() && IsFlush();
+            return IsStraightFlush() && HighCard().Rank == Rank.Ace;
+        }
+
+        private bool IsStraightFlush()
+        {
+            return IsStraight() && IsFlush();
         }
 
         private bool IsFlush()
@@ -116,7 +104,7 @@ namespace PokerKata
             return groupedBySuit.Count() == 1;
         }
 
-        private bool HasTwoPairs()
+        private bool IsTwoPairs()
         {
            return groupedByRank.Where(group => group.Count() == 2)
                 .Count() == 2;
@@ -133,7 +121,7 @@ namespace PokerKata
             return (ranks.Last(), ranks.First());
         }
 
-        private bool HaveWeGotOfAKind(int number)
+        private bool IsOfKind(int number)
         {
             return groupedByRank.Any(group => group.Count() == number);
         }
@@ -150,7 +138,7 @@ namespace PokerKata
            return groupList[index].First().Rank;
         }
 
-        private bool Straight()
+        private bool IsStraight()
         {
             var index = 0;
 
@@ -171,28 +159,6 @@ namespace PokerKata
 
             return true;
 
-           // var cardGroup = groupedByRank.ToList().First();
-
-
-            //foreach (var card in cardGroup)
-            //{
-
-            //}
-
-            //var rankAtIndexOne = GetRankAtIndex(1);
-            //var rankAtIndexTwo = GetRankAtIndex(2);
-            //var rankAtIndexThree = GetRankAtIndex(3);
-            //var rankAtIndexFour = GetRankAtIndex(4);
-
-
-            //if (rankAtIndexOne == rankAtIndexZero + 1 && rankAtIndexTwo == rankAtIndexOne + 1 && rankAtIndexThree == rankAtIndexTwo + 1 && rankAtIndexFour == rankAtIndexThree + 1)
-            //{
-            //    return true;
-            //}
-
-            //return false;
-
-            
         }
 
     }
