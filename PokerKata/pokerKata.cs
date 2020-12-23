@@ -1,5 +1,8 @@
 using System;
 
+// Two Poker hand objects, player1hand player2hand
+// Create container for different hands so the hands can be compared. 
+
 namespace PokerKata
 {
 

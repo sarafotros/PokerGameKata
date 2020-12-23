@@ -20,9 +20,6 @@ namespace PokerKata.UnitTests
         [InlineData("8C 9C 10C JC QC", "IsStraight Flush , high card: Queen")]
         [InlineData("10C JC QC KC AC", "Royal Flush")]
 
-
-
-
         public void AcceptPlayersHand_ReturnsHighestScore(string playersHand, string expectedScore)
         {
             var hand = new PlayerHand(playersHand);
