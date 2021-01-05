@@ -8,6 +8,7 @@ namespace PokerKata
 
     public class PokerGame
     {
+
         public PokerGame()
         {
 
@@ -15,7 +16,11 @@ namespace PokerKata
 
         public string CaluclateResult(string player1Cards, string player2Cards)
         {
-            return "Player2 wins - high card: Ace";
+            var playerOneHand = new PlayerHand(player1Cards);
+            var playerTwoHand = new PlayerHand(player2Cards);
+
+           
+            return $"Player2 wins - {playerTwoHand.GetScore()}";
         }
     }
 
