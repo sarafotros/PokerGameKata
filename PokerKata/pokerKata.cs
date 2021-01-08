@@ -19,8 +19,25 @@ namespace PokerKata
             var playerOneHand = new PlayerHand(player1Cards);
             var playerTwoHand = new PlayerHand(player2Cards);
 
-           
-            return $"Player2 wins - {playerTwoHand.GetScore()}";
+            if (playerTwoHand.GetScore().Value == playerOneHand.GetScore().Value)
+            {
+                if ( playerTwoHand.HighCard().Rank > playerOneHand.HighCard().Rank )
+                {
+                    return $"Player2 wins - {playerTwoHand.GetScore().Description}";
+                }
+
+                if (playerOneHand.HighCard().Rank > playerTwoHand.HighCard().Rank)
+                {
+                    return $"Player1 wins - {playerOneHand.GetScore().Description}"; 
+                }
+                return "Draw";
+            }
+            if (playerTwoHand.GetScore().Value > playerOneHand.GetScore().Value)
+            {
+                return $"Player2 wins - {playerTwoHand.GetScore().Description}"; 
+            }
+            return $"Player1 wins - {playerOneHand.GetScore().Description}"; 
+
         }
     }
 

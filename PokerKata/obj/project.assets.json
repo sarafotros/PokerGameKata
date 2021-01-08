@@ -3504,32 +3504,29 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\naomi.schofield\\.nuget\\packages\\": {}
+    "/Users/sara.fotros/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\Mac\\Home\\Development\\PokerGameKata\\PokerKata\\PokerKata.csproj",
+      "projectUniqueName": "/Users/sara.fotros/Development/code/cSharp/PokerGameKata/PokerKata/PokerKata.csproj",
       "projectName": "PokerKata",
-      "projectPath": "\\\\Mac\\Home\\Development\\PokerGameKata\\PokerKata\\PokerKata.csproj",
-      "packagesPath": "C:\\Users\\naomi.schofield\\.nuget\\packages\\",
-      "outputPath": "\\\\Mac\\Home\\Development\\PokerGameKata\\PokerKata\\obj\\",
+      "projectPath": "/Users/sara.fotros/Development/code/cSharp/PokerGameKata/PokerKata/PokerKata.csproj",
+      "packagesPath": "/Users/sara.fotros/.nuget/packages/",
+      "outputPath": "/Users/sara.fotros/Development/code/cSharp/PokerGameKata/PokerKata/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\naomi.schofield\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/sara.fotros/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://moonpig.myget.org/F/moonpig-nuget/auth/deed5c9f-2998-48f8-9dbf-3a5ba5012443/api/v3/index.json": {},
-        "http://nuget.moonpig.com/nuget/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -3541,6 +3538,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -3574,7 +3572,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

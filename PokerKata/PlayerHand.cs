@@ -11,7 +11,6 @@ namespace PokerKata
         IOrderedEnumerable<IGrouping<Suit, PlayerCard>> groupedBySuit;
         
 
-
         public PlayerHand(string playersHand)
         {
             var arrayOfCards = playersHand.Split(" ");
@@ -44,44 +43,43 @@ namespace PokerKata
          **      GroupedBy = {   { 3Clubs, 3Hearts, 3 Diamonds }, {2Diamonds, 2Clubs} }
          */
 
-        public string GetScore()
+        public Score GetScore()
         {
             if (IsRoyalFlush())
-                return "Royal Flush";
+                return new Score("Royal Flush", 900 ); 
             
             if (IsStraightFlush())
-                return $"IsStraight Flush , high card: {HighCard().Rank}";
-            
+                 return new Score($"Straight Flush , high card: {HighCard().Rank}", 800 );
+
             if (IsOfKind(4))
-                return $"Four of a kind: {GetBestRank()}s";
+                return  new Score($"Four of a kind: {GetBestRank()}s", 700);
             
             if(IsFullHouse())
-                return $"Full House: {GetRankAtIndex(0)}s and {GetRankAtIndex(1)}s";
+                return new Score($"Full House: {GetRankAtIndex(0)}s and {GetRankAtIndex(1)}s",600);
             
 
             if (IsFlush())
-                return $"Flush: {groupedBySuit.First().First().Suit}s , high card: {HighCard().Rank}";
+                return new Score( $"Flush: {groupedBySuit.First().First().Suit}s , high card: {HighCard().Rank}",500);
             
             if (IsStraight())
-                return $"IsStraight , high card: {HighCard().Rank}";
+                return new Score( $"Straight , high card: {HighCard().Rank}",400);
             
 
             if (IsOfKind(3))
-                return $"Three of a kind: {GetBestRank()}s";
+                return new Score( $"Three of a kind: {GetBestRank()}s",300 + (int)GetBestRank() );
 
             if (IsTwoPairs())
-                return $"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s";
+                return new Score($"Two pair: {GetTwoPair().Highest}s and {GetTwoPair().Lowest}s",200 + (int) GetTwoPair().Highest+(int)GetTwoPair().Lowest );
             
             if (IsOfKind(2))
-                return $"Pair: {GetBestRank()}s";
+                return new Score($"Pair: {GetBestRank()}s",100 + (int)GetBestRank());
             
-            return $"high card: {HighCard().Rank}";
+            return  new Score($"high card: {HighCard().Rank}", (int) HighCard().Rank );
         }
 
-        private PlayerCard HighCard()
+        public PlayerCard HighCard()
         {
             return PlayingCards.Last();
-
         }
 
         private bool IsFullHouse()
@@ -106,8 +104,8 @@ namespace PokerKata
 
         private bool IsTwoPairs()
         {
-           return groupedByRank.Where(group => group.Count() == 2)
-                .Count() == 2;
+           return groupedByRank
+               .Count(group => Enumerable.Count<PlayerCard>(@group) == 2) == 2;
         }
 
         private (Rank Highest, Rank Lowest) GetTwoPair()
@@ -151,9 +149,7 @@ namespace PokerKata
                 {
                     return false;
                 }
-
-                index++; 
-
+                index++;
             }
 
 

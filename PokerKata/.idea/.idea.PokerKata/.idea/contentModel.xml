@@ -24,6 +24,7 @@
       <e p="PokerKata.csproj" t="IncludeRecursive" />
       <e p="PokerKata.sln" t="IncludeFlat" />
       <e p="Rank.cs" t="Include" />
+      <e p="Score.cs" t="Include" />
       <e p="Suit.cs" t="Include" />
       <e p="UnitTests" t="Include">
         <e p="CardRankComparerTests.cs" t="Include" />
